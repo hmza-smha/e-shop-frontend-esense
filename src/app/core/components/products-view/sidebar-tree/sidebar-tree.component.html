@@ -1,16 +1,66 @@
 <ul class="list-group margin-bottom-25 sidebar-menu">
-  <li class="list-group-item clearfix">
+
+  <!-- Building the side tree -->
+  <li
+  *ngFor="let category of categories"
+   class="list-group-item clearfix dropdown">
+    <a (click)="fetchCategory(category.name)">
+      <i
+        [ngStyle]="{'opacity': category.subcategories ? '1' : '0'}"
+        class="fa fa-angle-right">
+      </i>
+      {{ category.name }}
+    </a>
+
+    <!-- Level 1 -->
+    <ng-container *ngIf="category.subcategories">
+      <ul class="dropdown-menu">
+        <li *ngFor="let subcategory1 of category.subcategories"
+          class="list-group-item clearfix dropdown">
+          <a (click)="fetchCategory(subcategory1.name)">
+            <i
+              [ngStyle]="{'opacity': subcategory1.subcategories ? '1' : '0'}"
+              class="fa fa-angle-right">
+            </i>
+            {{ subcategory1.name }}
+          </a>
+
+          <!-- Level 2 -->
+          <ng-container *ngIf="subcategory1.subcategories">
+            <ul class="dropdown-menu">
+              <li
+                *ngFor="let subcategory2 of subcategory1.subcategories"
+                class="list-group-item clearfix">
+                <a (click)="fetchCategory(subcategory2.name)">
+                  <i
+                    style="opacity: 0;"
+                    class="fa fa-angle-right">
+                  </i>
+                  {{ subcategory2.name }}
+                </a>
+              </li>
+            </ul>
+          </ng-container>
+
+        </li>
+      </ul>
+    </ng-container>
+
+  </li>
+
+  <!-- <li class="list-group-item clearfix">
     <a href="shop-product-list.html"
       ><i class="fa fa-angle-right"></i> Ladies</a
     >
   </li>
-  <li class="list-group-item clearfix dropdown active">
+
+  <li class="list-group-item clearfix dropdown">
     <a href="javascript:void(0);" class="collapsed">
       <i class="fa fa-angle-right"></i>
       Mens
     </a>
     <ul class="dropdown-menu" style="display: block">
-      <li class="list-group-item dropdown clearfix active">
+      <li class="list-group-item dropdown clearfix">
         <a href="javascript:void(0);" class="collapsed"
           ><i class="fa fa-angle-right"></i> Shoes
         </a>
@@ -32,12 +82,12 @@
               </li>
             </ul>
           </li>
-          <li class="list-group-item dropdown clearfix active">
+          <li class="list-group-item dropdown clearfix">
             <a href="javascript:void(0);" class="collapsed"
               ><i class="fa fa-angle-right"></i> Sport
             </a>
             <ul class="dropdown-menu" style="display: block">
-              <li class="active">
+              <li class="">
                 <a href="shop-product-list.html"
                   ><i class="fa fa-angle-right"></i> Sport 1</a
                 >
@@ -107,5 +157,5 @@
     <a href="shop-product-list.html"
       ><i class="fa fa-angle-right"></i> Custom Link</a
     >
-  </li>
+  </li> -->
 </ul>

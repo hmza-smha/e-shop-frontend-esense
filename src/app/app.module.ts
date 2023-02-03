@@ -15,6 +15,7 @@ import { BrandsComponent } from './core/shared/brands/brands.component';
 import { StepsComponent } from './core/shared/steps/steps.component';
 import { FooterComponent } from './core/components/footer/footer.component';
 import { PreFooterComponent } from './core/components/footer/pre-footer/pre-footer.component';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -34,7 +35,8 @@ import { PreFooterComponent } from './core/components/footer/pre-footer/pre-foot
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
