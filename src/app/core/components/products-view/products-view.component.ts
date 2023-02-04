@@ -10,5 +10,9 @@ export class ProductsViewComponent implements OnInit {
 
   ngOnInit(): void {
   }
+  name: string;
+  OnProductClick(name: string){
+    this.name = name;
+  }
 
 }
