@@ -1,11 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-
-
-
-interface Category {
-  name: string;
-  subcategories?: Category[];
-}
+import { Category, ProductService } from 'src/app/core/api/products.service';
 
 @Component({
   selector: 'app-sidebar-tree',
@@ -23,74 +17,17 @@ interface Category {
 })
 
 export class SidebarTreeComponent implements OnInit {
-  constructor() {}
+  constructor(private productService: ProductService) {}
 
-  categories: Category[] = [
-    {
-      name: 'Cars',
-      subcategories: [
-        {
-          name: 'BMW',
-        },
-        {
-          name: 'Honda',
-        },
-      ],
-    },
-    {
-      name: 'Mens',
-      subcategories: [
-        {
-          name: 'Jeans',
-          subcategories: [
-            {
-              name: 'Classic 1'
-            },
-            {
-              name: 'Classic 2'
-            }
-          ],
-        },
-        {
-          name: 'T-Shirt',
-        },
-      ],
-    },
-    {
-      name: 'Women',
-      subcategories: [
-        {
-          name: 'Jeans',
-        },
-        {
-          name: 'T-Shirt'
-        },
-      ],
-    },
-    {
-      name: 'Kids',
-      subcategories: [
-        {
-          name: 'Jeans',
-          subcategories: [
-            {
-              name: 'Jeans',
-            },
-            {
-              name: 'T-Shirt'
-            },
-          ],
-        },
-        {
-          name: 'T-Shirt'
-        },
-      ],
-    },
-  ];
+  categories: Category[] = [];
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    // this.categories = this.productService.dummyTree;
+    // this.productService.getCategoriesTree().subscribe(res => this.categories = res)
+  }
 
   fetchCategory(name: string){
+
     console.log("Fetching...", name);
   }
 }

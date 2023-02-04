@@ -16,6 +16,7 @@ import { StepsComponent } from './core/shared/steps/steps.component';
 import { FooterComponent } from './core/components/footer/footer.component';
 import { PreFooterComponent } from './core/components/footer/pre-footer/pre-footer.component';
 import { FormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -36,7 +37,8 @@ import { FormsModule } from '@angular/forms';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    FormsModule
+    FormsModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
