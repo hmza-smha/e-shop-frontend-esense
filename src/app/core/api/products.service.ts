@@ -84,4 +84,8 @@ export class ProductService {
   getProductsTree(query: string){
      return this.http.get<Category>(this.url + query);
   }
+
+  getProduct(id: number){
+    return this.http.get<Category>(this.url + '/Products/' + id);
+  }
 }

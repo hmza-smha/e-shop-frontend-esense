@@ -7,7 +7,7 @@ import { Product } from '../../shared/product/product.module';
   selector: 'app-products-view',
   templateUrl: './products-view.component.html',
 })
-export class ProductsViewComponent implements OnInit {
+export class ProductsViewComponent{
 
   constructor(
     private productsService: ProductService,
@@ -15,35 +15,34 @@ export class ProductsViewComponent implements OnInit {
     private router: Router
     ) { }
 
-  products: Product[] = [];
+  // products: Product[] = [];
 
-  ngOnInit(): void {
-    this.activatedRouter.queryParams.subscribe(res => {
-      let url = this.router.url;
-      if(url == '/') url = "/products?categoryName=Cars"
-      this.productsService.getProductsTree(url)
-        .subscribe(tree =>this.products = this.getProducts(tree))
-    })
-  }
+  // ngOnInit(): void {
+  //   this.activatedRouter.queryParams.subscribe(res => {
+  //     let url = this.router.url;
+  //     if(url == '/') url = "/products?categoryName=Cars"
+  //     this.productsService.getProductsTree(url)
+  //       .subscribe(tree =>this.products = this.getProducts(tree))
+  //   })
+  // }
 
   onCategoryFilter(name) {
     this.activatedRouter.queryParams.subscribe(res => {
       this.router.navigate(['products'], { queryParams: {...res, categoryName: name } });
     })
-
   }
 
-  private getProducts(tree) {
-    let all = [];    
-    all = [...all, ...tree.products];
-    tree.subProducts.forEach(levelOne => {
-      all = [...all, ...levelOne.products];
-      levelOne.subProducts.forEach(levelTwo => {
-        all = [...all, ...levelTwo.products];
-      });
-    });
+  // private getProducts(tree) {
+  //   let all = [];    
+  //   all = [...all, ...tree.products];
+  //   tree.subProducts.forEach(levelOne => {
+  //     all = [...all, ...levelOne.products];
+  //     levelOne.subProducts.forEach(levelTwo => {
+  //       all = [...all, ...levelTwo.products];
+  //     });
+  //   });
 
-    return all;
-  }
+  //   return all;
+  // }
 
 }

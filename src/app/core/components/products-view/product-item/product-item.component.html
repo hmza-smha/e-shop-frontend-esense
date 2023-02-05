@@ -13,7 +13,7 @@
             </div>
         </div>
         <h3>
-            <a (click)="OnProductClick(item)">{{ item.name }}</a>
+            <a (click)="OnProductClick(item.id)">{{ item.name }}</a>
         </h3>
         <div class="pi-price">${{ item.price }}</div>
         <a href="javascript:;" class="btn btn-default add2cart">Add to cart</a>

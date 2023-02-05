@@ -25,6 +25,8 @@ import { DetailsDialogComponent } from './core/components/products-view/product-
 import { MatButtonModule } from '@angular/material/button';
 import { MatDialogModule } from '@angular/material/dialog';
 import { CommonModule } from '@angular/common';
+import { DetailsItemComponent } from './core/components/products-view/product-item/details-item/details-item.component';
+import { ProductListComponent } from './core/components/products-view/product-list/product-list.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -41,7 +43,9 @@ import { CommonModule } from '@angular/common';
     FooterComponent,
     PreFooterComponent,
     ProductItemComponent,
-    DetailsDialogComponent
+    DetailsDialogComponent,
+    DetailsItemComponent,
+    ProductListComponent
   ],
   imports: [
     BrowserModule,

@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 export interface Product {
-  Id: number;
+  id: number;
   name: string;
   price: number;
   inStuck: boolean;
