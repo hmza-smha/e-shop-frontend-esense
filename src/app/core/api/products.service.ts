@@ -1,12 +1,8 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { map } from 'rxjs';
+import { Category } from '../shared/category/category.module';
 
-
-export interface Category {
-  name: string;
-  children?: Category[];
-}
 
 @Injectable({
   providedIn: 'root'
@@ -84,6 +80,10 @@ export class ProductService {
 
   getCategoriesTree(){
     return this.http.get<Category[]>(this.url + "/tree");
+  }
+
+  getProductsTree(category: string){
+     return this.http.get<Category>(this.url + "?categoryName="+category);
   }
 
 }

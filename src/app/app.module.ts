@@ -17,6 +17,9 @@ import { FooterComponent } from './core/components/footer/footer.component';
 import { PreFooterComponent } from './core/components/footer/pre-footer/pre-footer.component';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+import { CategoryModule } from './core/shared/category/category.module';
+import { ProductItemComponent } from './core/components/products-view/product-item/product-item.component';
+import { ProductModule } from './core/shared/product/product.module';
 
 @NgModule({
   declarations: [
@@ -32,13 +35,16 @@ import { HttpClientModule } from '@angular/common/http';
     BrandsComponent,
     StepsComponent,
     FooterComponent,
-    PreFooterComponent
+    PreFooterComponent,
+    ProductItemComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    CategoryModule,
+    ProductModule
   ],
   providers: [],
   bootstrap: [AppComponent]
