@@ -1,19 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { map } from 'rxjs';
 import { ProductService } from '../../api/products.service';
-import { Category } from '../../shared/category/category.module';
 import { Product } from '../../shared/product/product.module';
-
-
-class Filters {
-  categoryName: string;
-  textSearch: string;
-  inStuck: string;
-  available: string;
-  priceFrom: number;
-  priceTo: number;
-}
 
 @Component({
   selector: 'app-products-view',
@@ -31,29 +19,15 @@ export class ProductsViewComponent implements OnInit {
 
   ngOnInit(): void {
     this.activatedRouter.queryParams.subscribe(res => {
-      console.log('activatedRouter', res);
       let url = this.router.url;
-      
+      if(url == '/') url = "/products?categoryName=Cars"
       this.productsService.getProductsTree(url)
-        .subscribe(tree => {
-      this.products = this.getProducts(tree);
-      })
-      
-
+        .subscribe(tree =>this.products = this.getProducts(tree))
     })
-
-    // this.productsService.getProductsTree('cars')
-    //   .subscribe(tree => {
-    //     this.products = this.getProducts(tree);
-    //   })
   }
 
   onCategoryFilter(name) {
-    // this.router.navigate(['products'], { queryParams: {categoryName: name} })
-
-    console.log("category filter: ", name);
     this.activatedRouter.queryParams.subscribe(res => {
-      console.log('activatedRouter', res);
       this.router.navigate(['products'], { queryParams: {...res, categoryName: name } });
     })
 

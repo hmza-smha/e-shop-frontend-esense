@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { map } from 'rxjs';
 import { Category } from '../shared/category/category.module';
 
 
@@ -9,7 +8,6 @@ import { Category } from '../shared/category/category.module';
 })
 export class ProductService {
 
-  // private readonly url = "http://localhost:5257/api/Products";
   private readonly url = "http://localhost:5257/api";
 
   constructor(private http: HttpClient) { }
@@ -86,5 +84,4 @@ export class ProductService {
   getProductsTree(query: string){
      return this.http.get<Category>(this.url + query);
   }
-
 }

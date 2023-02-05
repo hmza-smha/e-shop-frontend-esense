@@ -20,31 +20,25 @@ export class SidebarFilterComponent implements OnInit {
   }
 
   onNotAvailable(condition){
-    console.log("onNotAvailable: ", condition.target.checked);
     this.activatedRouter.queryParams.subscribe(res => {
-      console.log('activatedRouter', res);
       this.router.navigate(['products'], { queryParams: {...res, available: condition.target.checked } });
     })
   }
 
   onInStuck(condition){
-    console.log("onInStuck: ", condition.target.checked);
     this.activatedRouter.queryParams.subscribe(res => {
-      console.log('activatedRouter', res);
       this.router.navigate(['products'], { queryParams: {...res, instuck: condition.target.checked } });
     })
   }
 
   filterPrice(){
-    // console.log('Price', this.priceRange.nativeElement.value);
+    const price = this.priceRange.nativeElement.value
+      .replaceAll('$', '')
+      .replaceAll(' - ',' ')
+      .split(' ');
 
-    let price = this.priceRange.nativeElement.value.replaceAll('$','');
-    let arr = price.replaceAll(' - ',' ').split(' ');
-
-    console.log("price: ", arr);
     this.activatedRouter.queryParams.subscribe(res => {
-      console.log('activatedRouter', res);
-      this.router.navigate(['products'], { queryParams: {...res, priceFrom:  arr[0], priceTo: arr[1]} });
+      this.router.navigate(['products'], { queryParams: {...res, priceFrom:  price[0], priceTo: price[1]} });
     })
     
   }

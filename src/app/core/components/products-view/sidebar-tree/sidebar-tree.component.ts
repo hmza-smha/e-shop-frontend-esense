@@ -31,7 +31,6 @@ export class SidebarTreeComponent implements OnInit {
   }
 
   fetchCategory(name: string){
-    console.log("Fetching...", name);
     this.categoryFilter.emit(name);
   }
 }

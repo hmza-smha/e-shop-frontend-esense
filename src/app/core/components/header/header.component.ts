@@ -20,13 +20,9 @@ export class HeaderComponent implements OnInit {
   }
 
   onSubmit(searchForm){
-    console.log("Searching....", searchForm.form.value);
-
     this.activatedRouter.queryParams.subscribe(res => {
-      console.log('activatedRouter', res);
       this.router.navigate(['products'], { queryParams: {...res, textSearch: searchForm.form.value.text } });
     })
-
   }
 
 }
