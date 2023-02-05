@@ -20,7 +20,11 @@ import { HttpClientModule } from '@angular/common/http';
 import { CategoryModule } from './core/shared/category/category.module';
 import { ProductItemComponent } from './core/components/products-view/product-item/product-item.component';
 import { ProductModule } from './core/shared/product/product.module';
-
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { DetailsDialogComponent } from './core/components/products-view/product-item/details-dialog/details-dialog.component';
+import { MatButtonModule } from '@angular/material/button';
+import { MatDialogModule } from '@angular/material/dialog';
+import { CommonModule } from '@angular/common';
 @NgModule({
   declarations: [
     AppComponent,
@@ -36,7 +40,8 @@ import { ProductModule } from './core/shared/product/product.module';
     StepsComponent,
     FooterComponent,
     PreFooterComponent,
-    ProductItemComponent
+    ProductItemComponent,
+    DetailsDialogComponent
   ],
   imports: [
     BrowserModule,
@@ -45,7 +50,11 @@ import { ProductModule } from './core/shared/product/product.module';
     HttpClientModule,
     CategoryModule,
     ProductModule,
-    AppRoutingModule
+    AppRoutingModule,
+    BrowserAnimationsModule,
+    MatButtonModule,
+    MatDialogModule,
+    CommonModule
   ],
   providers: [],
   bootstrap: [AppComponent]
