@@ -15,7 +15,7 @@ export class ProductItemComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  OnProductClick(name: string){
-    console.log('name', name);
+  OnProductClick(item){
+    console.log('item', item);
   }
 }
