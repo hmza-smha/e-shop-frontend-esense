@@ -9,7 +9,8 @@ import { Category } from '../shared/category/category.module';
 })
 export class ProductService {
 
-  private readonly url = "http://localhost:5257/api/Products";
+  // private readonly url = "http://localhost:5257/api/Products";
+  private readonly url = "http://localhost:5257/api";
 
   constructor(private http: HttpClient) { }
 
@@ -79,11 +80,11 @@ export class ProductService {
 
 
   getCategoriesTree(){
-    return this.http.get<Category[]>(this.url + "/tree");
+    return this.http.get<Category[]>(this.url + "/Products/tree");
   }
 
-  getProductsTree(category: string){
-     return this.http.get<Category>(this.url + "?categoryName="+category);
+  getProductsTree(query: string){
+     return this.http.get<Category>(this.url + query);
   }
 
 }

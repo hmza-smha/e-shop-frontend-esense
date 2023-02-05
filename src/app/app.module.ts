@@ -44,7 +44,8 @@ import { ProductModule } from './core/shared/product/product.module';
     FormsModule,
     HttpClientModule,
     CategoryModule,
-    ProductModule
+    ProductModule,
+    AppRoutingModule
   ],
   providers: [],
   bootstrap: [AppComponent]
