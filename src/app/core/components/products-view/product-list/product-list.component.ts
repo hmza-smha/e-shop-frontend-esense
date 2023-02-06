@@ -18,22 +18,21 @@ export class ProductListComponent implements OnInit {
   products: Product[] = [];
 
   ngOnInit(): void {
-    this.activatedRouter.queryParams.subscribe(res => {
-      let url = this.router.url;
-      if(url == '/') url = "/products?categoryName=Cars"
-      this.productsService.getProductsTree(url)
-        .subscribe(tree =>this.products = this.getProducts(tree))
+    this.productsService.filterData.subscribe(filters => {
+      let query = this.buildQuery(filters);
+      this.productsService.getProductsTree(query)
+        .subscribe(tree =>{
+          this.router.navigate(['products'], { queryParams: filters });
+
+          this.products = this.getProducts(tree);
+        })
     })
   }
 
-  onCategoryFilter(name) {
-    this.activatedRouter.queryParams.subscribe(res => {
-      console.log('On cat filter...');
-      // this.router.navigate(['products'], { queryParams: {...res, categoryName: name } });
-    })
-
+  private buildQuery(filters){
+    let query = `?categoryName=${filters.categoryName ?? ''}&inStuck=${filters.instuck ?? ''}&available=${filters.available ?? ''}&priceFrom=${filters.priceFrom ?? ''}&priceTo=${filters.priceTo ?? ''}`;
+    return query;
   }
-
   private getProducts(tree) {
     let all = [];    
     all = [...all, ...tree.products];

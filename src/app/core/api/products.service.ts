@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Category } from '../shared/category/category';
 import { Product } from '../shared/product/product';
+import { BehaviorSubject, Subject } from 'rxjs';
 
 
 @Injectable({
@@ -9,9 +10,12 @@ import { Product } from '../shared/product/product';
 })
 export class ProductService {
 
-  private readonly url = "http://localhost:5257/api";
+  private readonly url = "http://localhost:5257/api/Products";
 
   constructor(private http: HttpClient) { }
+
+  filterData = new BehaviorSubject({});
+
 
   // for testing
   dummyTree: Category[] = [
@@ -79,7 +83,7 @@ export class ProductService {
 
 
   getCategoriesTree(){
-    return this.http.get<Category[]>(this.url + "/Products/tree");
+    return this.http.get<Category[]>(this.url + "/tree");
   }
 
   getProductsTree(query: string){
@@ -87,6 +91,6 @@ export class ProductService {
   }
 
   getProduct(id: number){
-    return this.http.get<Product>(this.url + '/Products/' + id);
+    return this.http.get<Product>(this.url + "/" + id);
   }
 }

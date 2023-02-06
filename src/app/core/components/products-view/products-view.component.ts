@@ -15,34 +15,14 @@ export class ProductsViewComponent{
     private router: Router
     ) { }
 
-  // products: Product[] = [];
-
-  // ngOnInit(): void {
-  //   this.activatedRouter.queryParams.subscribe(res => {
-  //     let url = this.router.url;
-  //     if(url == '/') url = "/products?categoryName=Cars"
-  //     this.productsService.getProductsTree(url)
-  //       .subscribe(tree =>this.products = this.getProducts(tree))
-  //   })
-  // }
-
   onCategoryFilter(name) {
-    this.activatedRouter.queryParams.subscribe(res => {
-      this.router.navigate(['products'], { queryParams: {...res, categoryName: name } });
-    })
+    // this.activatedRouter.queryParams.subscribe(res => {
+    //   this.router.navigate(['products'], { queryParams: {...res, categoryName: name } });
+    // })
+
+    this.productsService.filterData.next({
+      ...this.productsService.filterData.getValue(),
+      categoryName: name
+    });
   }
-
-  // private getProducts(tree) {
-  //   let all = [];    
-  //   all = [...all, ...tree.products];
-  //   tree.subProducts.forEach(levelOne => {
-  //     all = [...all, ...levelOne.products];
-  //     levelOne.subProducts.forEach(levelTwo => {
-  //       all = [...all, ...levelTwo.products];
-  //     });
-  //   });
-
-  //   return all;
-  // }
-
 }
