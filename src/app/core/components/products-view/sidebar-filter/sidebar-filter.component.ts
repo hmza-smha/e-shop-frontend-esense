@@ -22,24 +22,18 @@ export class SidebarFilterComponent implements OnInit {
   }
 
   onNotAvailable(condition){
-    // this.activatedRouter.queryParams.subscribe(res => {
-    //   this.router.navigate(['products'], { queryParams: {...res, available: condition.target.checked } });
-    // })
-
     this.productsService.filterData.next({
       ...this.productsService.filterData.getValue(),
-      available: condition.target.checked
+      available: condition.target.checked,
+      textSearch: ''
     });
   }
 
   onInStuck(condition){
-    // this.activatedRouter.queryParams.subscribe(res => {
-    //   this.router.navigate(['products'], { queryParams: {...res, instuck: condition.target.checked } });
-    // })
-
     this.productsService.filterData.next({
       ...this.productsService.filterData.getValue(),
-      inStuck: condition.target.checked
+      inStuck: condition.target.checked,
+      textSearch: ''
     });
   }
 

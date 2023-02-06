@@ -30,9 +30,13 @@ export class ProductListComponent implements OnInit {
   }
 
   private buildQuery(filters){
-    let query = `?categoryName=${filters.categoryName ?? ''}&inStuck=${filters.instuck ?? ''}&available=${filters.available ?? ''}&priceFrom=${filters.priceFrom ?? ''}&priceTo=${filters.priceTo ?? ''}`;
-    return query;
+    if(filters.textSearch){
+      return  `?categoryName=${filters.categoryName ?? 'cars'}&textSearch=${filters.textSearch}`;
+    }
+
+    return `?categoryName=${filters.categoryName ?? ''}&inStuck=${filters.instuck ?? ''}&available=${filters.available ?? ''}&priceFrom=${filters.priceFrom ?? ''}&priceTo=${filters.priceTo ?? ''}`;
   }
+
   private getProducts(tree) {
     let all = [];    
     all = [...all, ...tree.products];

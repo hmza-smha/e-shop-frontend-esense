@@ -22,7 +22,8 @@ export class ProductsViewComponent{
 
     this.productsService.filterData.next({
       ...this.productsService.filterData.getValue(),
-      categoryName: name
+      categoryName: name,
+      textSearch: ''
     });
   }
 }

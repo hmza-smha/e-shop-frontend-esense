@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
+import { ProductService } from '../../api/products.service';
 
 @Component({
   selector: 'app-header',
@@ -12,6 +13,7 @@ export class HeaderComponent implements OnInit {
 
   constructor(
     private activatedRouter: ActivatedRoute,
+    private productsService: ProductService,
     private router: Router
   ) { }
 
@@ -20,9 +22,11 @@ export class HeaderComponent implements OnInit {
   }
 
   onSubmit(searchForm){
-    this.activatedRouter.queryParams.subscribe(res => {
-      this.router.navigate(['products'], { queryParams: {...res, textSearch: searchForm.form.value.text } });
-    })
+      // this.router.navigate(['products'], { queryParams: { textSearch: searchForm.form.value.text } });
+      this.productsService.filterData.next({
+        ...this.productsService.filterData.getValue(),
+        textSearch: searchForm.form.value.text
+      });
   }
 
 }
