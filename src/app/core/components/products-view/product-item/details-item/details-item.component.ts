@@ -17,11 +17,11 @@ export class DetailsItemComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    // var id = this.activatedRoute.snapshot.queryParams['id'];
-    // this.productsService.getProduct(id).subscribe(res => {
-    //   console.log("priduct", res);
-    //   this.item = res;
-    // })
+    var id = this.activatedRoute.snapshot.params['id'];
+    this.productsService.getProduct(id).subscribe(res => {
+      console.log("priduct", res);
+      this.item = res;
+    })
   }
 
 }
