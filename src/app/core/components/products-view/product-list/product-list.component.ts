@@ -34,7 +34,7 @@ export class ProductListComponent implements OnInit {
       return  `?categoryName=${filters.categoryName ?? 'cars'}&textSearch=${filters.textSearch}`;
     }
 
-    return `?categoryName=${filters.categoryName ?? ''}&inStuck=${filters.instuck ?? ''}&available=${filters.available ?? ''}&priceFrom=${filters.priceFrom ?? ''}&priceTo=${filters.priceTo ?? ''}`;
+    return `?categoryName=${filters.categoryName ?? ''}&inStuck=${filters.inStuck ?? ''}&available=${filters.available ?? ''}&priceFrom=${filters.priceFrom ?? ''}&priceTo=${filters.priceTo ?? ''}`;
   }
 
   private getProducts(tree) {
