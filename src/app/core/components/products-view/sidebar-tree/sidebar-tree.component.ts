@@ -1,4 +1,5 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { CategoryService } from 'src/app/core/api/category.service';
 import { ProductService } from 'src/app/core/api/products.service';
 import { Category } from 'src/app/core/shared/category/category';
 
@@ -21,13 +22,19 @@ export class SidebarTreeComponent implements OnInit {
   
   @Output() categoryFilter = new EventEmitter();
 
-  constructor(private productService: ProductService) {}
+  constructor(
+    private productService: ProductService,
+    private categoryService: CategoryService) {}
 
   categories: Category[] = [];
 
   ngOnInit(): void {
     // this.categories = this.productService.dummyTree;
-    this.productService.getCategoriesTree().subscribe(res => this.categories = res);
+    // this.productService.getCategoriesTree().subscribe(res => this.categories = res);
+    this.categoryService.getCategoryTree().subscribe(res => {
+      this.categories = res;
+      console.log("Tree", this.categories);
+    });
   }
 
   fetchCategory(name: string){
