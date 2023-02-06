@@ -9,4 +9,12 @@ export interface Product {
   additionalInfo?: string;
   oldPrice?: number;
   rate?: number;
+  reviews?: Review[];
+}
+
+export interface Review{
+  id: number,
+  username: string,
+  rate: number,
+  description: string
 }
