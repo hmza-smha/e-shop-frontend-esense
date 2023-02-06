@@ -1,6 +1,6 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { ProductService } from 'src/app/core/api/products.service';
-import { Category } from 'src/app/core/shared/category/category.module';
+import { Category } from 'src/app/core/shared/category/category';
 
 @Component({
   selector: 'app-sidebar-tree',

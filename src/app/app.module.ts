@@ -17,9 +17,7 @@ import { FooterComponent } from './core/components/footer/footer.component';
 import { PreFooterComponent } from './core/components/footer/pre-footer/pre-footer.component';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
-import { CategoryModule } from './core/shared/category/category.module';
 import { ProductItemComponent } from './core/components/products-view/product-item/product-item.component';
-import { ProductModule } from './core/shared/product/product.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { DetailsDialogComponent } from './core/components/products-view/product-item/details-dialog/details-dialog.component';
 import { MatButtonModule } from '@angular/material/button';
@@ -27,6 +25,7 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { CommonModule } from '@angular/common';
 import { DetailsItemComponent } from './core/components/products-view/product-item/details-item/details-item.component';
 import { ProductListComponent } from './core/components/products-view/product-list/product-list.component';
+import { NotFoundComponent } from './core/shared/not-found/not-found.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -45,15 +44,14 @@ import { ProductListComponent } from './core/components/products-view/product-li
     ProductItemComponent,
     DetailsDialogComponent,
     DetailsItemComponent,
-    ProductListComponent
+    ProductListComponent,
+    NotFoundComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
     HttpClientModule,
-    CategoryModule,
-    ProductModule,
     AppRoutingModule,
     BrowserAnimationsModule,
     MatButtonModule,

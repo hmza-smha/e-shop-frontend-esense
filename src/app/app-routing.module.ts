@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { DetailsItemComponent } from './core/components/products-view/product-item/details-item/details-item.component';
 import { ProductListComponent } from './core/components/products-view/product-list/product-list.component';
+import { NotFoundComponent } from './core/shared/not-found/not-found.component';
 
 const routes: Routes = [
   { 
@@ -14,8 +15,12 @@ const routes: Routes = [
     component: ProductListComponent
   },
   {
-    path: 'product',
+    path: 'details',
     component: DetailsItemComponent
+  },
+  {
+    path: '**',
+    component: NotFoundComponent
   }
 ];
 
