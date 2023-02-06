@@ -1,15 +1,10 @@
 import {Component, Inject, Input} from '@angular/core';
 import {MatDialog, MAT_DIALOG_DATA} from '@angular/material/dialog';
-
-export interface DialogData {
-  animal: 'panda' | 'unicorn' | 'lion';
-}
-
+import { Product } from 'src/app/core/shared/product/product';
 
 @Component({
   selector: 'app-details-dialog',
   templateUrl: './details-dialog.component.html',
-  styleUrls: ['./details-dialog.component.css']
 })
 export class DetailsDialogComponent {
 
@@ -31,5 +26,5 @@ export class DetailsDialogComponent {
 })
 export class DialogInfo {
   // constructor(@Inject(MAT_DIALOG_DATA) public data: DialogData) {}
-  constructor(@Inject(MAT_DIALOG_DATA) public data: any) {}
+  constructor(@Inject(MAT_DIALOG_DATA) public data: Product) {}
 }

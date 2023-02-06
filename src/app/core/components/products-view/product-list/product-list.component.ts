@@ -20,7 +20,7 @@ export class ProductListComponent implements OnInit {
   ngOnInit(): void {
     this.productsService.filterData.subscribe(filters => {
       let query = this.buildQuery(filters);
-      this.productsService.getProductsTree(query)
+      this.productsService.getProducts(query)
         .subscribe(tree =>{
           this.router.navigate(['products'], { queryParams: filters });
 

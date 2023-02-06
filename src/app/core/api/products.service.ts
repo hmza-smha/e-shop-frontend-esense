@@ -16,7 +16,6 @@ export class ProductService {
 
   filterData = new BehaviorSubject({});
 
-
   // for testing
   dummyTree: Category[] = [
     {
@@ -86,7 +85,7 @@ export class ProductService {
     return this.http.get<Category[]>(this.url + "/tree");
   }
 
-  getProductsTree(query: string){
+  getProducts(query: string){
      return this.http.get<Category>(this.url + query);
   }
 

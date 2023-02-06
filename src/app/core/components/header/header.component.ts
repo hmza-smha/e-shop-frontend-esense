@@ -22,11 +22,10 @@ export class HeaderComponent implements OnInit {
   }
 
   onSubmit(searchForm){
-      // this.router.navigate(['products'], { queryParams: { textSearch: searchForm.form.value.text } });
-      this.productsService.filterData.next({
-        ...this.productsService.filterData.getValue(),
-        textSearch: searchForm.form.value.text
-      });
+    this.productsService.filterData.next({
+      ...this.productsService.filterData.getValue(),
+      textSearch: searchForm.form.value.text
+    });
   }
 
 }

@@ -6,7 +6,6 @@ import { Product } from 'src/app/core/shared/product/product';
 @Component({
   selector: 'app-product-item',
   templateUrl: './product-item.component.html',
-  styleUrls: ['./product-item.component.css']
 })
 export class ProductItemComponent implements OnInit {
 
@@ -18,13 +17,7 @@ export class ProductItemComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  OnProductClick(itemId){
+  OnProductClick(itemId: number){
     this.router.navigate(['/details', itemId]);
-    // console.log('item', itemId);
-    // this.productsService.getProduct(itemId)
-    // .subscribe(x => {
-    //   console.log('x', x);
-      
-    // })
   }
 }
