@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Category } from '../shared/category/category';
+import { Product } from '../shared/product/product';
 
 
 @Injectable({
@@ -86,6 +87,6 @@ export class ProductService {
   }
 
   getProduct(id: number){
-    return this.http.get<Category>(this.url + '/Products/' + id);
+    return this.http.get<Product>(this.url + '/Products/' + id);
   }
 }

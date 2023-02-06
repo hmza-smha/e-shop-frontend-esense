@@ -28,7 +28,8 @@ export class ProductListComponent implements OnInit {
 
   onCategoryFilter(name) {
     this.activatedRouter.queryParams.subscribe(res => {
-      this.router.navigate(['products'], { queryParams: {...res, categoryName: name } });
+      console.log('On cat filter...');
+      // this.router.navigate(['products'], { queryParams: {...res, categoryName: name } });
     })
 
   }
