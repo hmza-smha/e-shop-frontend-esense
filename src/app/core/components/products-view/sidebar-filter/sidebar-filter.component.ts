@@ -42,10 +42,12 @@ export class SidebarFilterComponent implements OnInit {
       .replaceAll('$', '')
       .replaceAll(' - ',' ')
       .split(' ');
-
-    this.activatedRouter.queryParams.subscribe(res => {
-      this.router.navigate(['products'], { queryParams: {...res, priceFrom:  price[0], priceTo: price[1]} });
-    })
-    
+      
+    this.productsService.filterData.next({
+      ...this.productsService.filterData.getValue(),
+      priceFrom:  price[0],
+      priceTo: price[1],
+      textSearch: ''
+    });
   }
 }
