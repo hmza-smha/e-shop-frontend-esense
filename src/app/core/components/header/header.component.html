@@ -460,6 +460,8 @@
             <form (ngSubmit)="onSubmit(searchForm)" #searchForm="ngForm">
               <div class="input-group">
                 <input
+                  #search
+                  (input)="onInput(search.value)"
                   ngModel
                   name="text"
                   type="text"

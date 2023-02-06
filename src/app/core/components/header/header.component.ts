@@ -20,12 +20,19 @@ export class HeaderComponent implements OnInit {
   ngOnInit(): void {
 
   }
-
-  onSubmit(searchForm){
+  onInput(search){
+    console.log('typing......', search);
     this.productsService.filterData.next({
       ...this.productsService.filterData.getValue(),
-      textSearch: searchForm.form.value.text
+      textSearch: search
     });
+  }
+
+  onSubmit(searchForm){
+    // this.productsService.filterData.next({
+    //   ...this.productsService.filterData.getValue(),
+    //   textSearch: searchForm.form.value.text
+    // });
   }
 
 }
