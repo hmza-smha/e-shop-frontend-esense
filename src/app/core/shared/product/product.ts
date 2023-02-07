@@ -4,7 +4,7 @@ export interface Product {
   price: number;
   inStuck: boolean;
   available: boolean;
-  imageUrl?: string;
+  imageURL?: string;
   description?: string;
   additionalInfo?: string;
   oldPrice?: number;
