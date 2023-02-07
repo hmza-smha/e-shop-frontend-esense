@@ -29,7 +29,7 @@ export class SidebarTreeComponent implements OnInit {
   categories: Category[] = [];
 
   ngOnInit(): void {
-    // this.categories = this.productService.dummyTree;
+    // this.categories = this.categoryService.dummyTree;
     // this.productService.getCategoriesTree().subscribe(res => this.categories = res);
     this.categoryService.getCategoryTree().subscribe(res => {
       this.categories = res;
