@@ -82,26 +82,12 @@
                 <tr>
                   <th colspan="2">Additional features</th>
                 </tr>
-                <tr>
-                  <td class="datasheet-features-type">Value 1</td>
-                  <td>21 cm</td>
-                </tr>
-                <tr>
-                  <td class="datasheet-features-type">Value 2</td>
-                  <td>700 gr.</td>
-                </tr>
-                <tr>
-                  <td class="datasheet-features-type">Value 3</td>
-                  <td>10 person</td>
-                </tr>
-                <tr>
-                  <td class="datasheet-features-type">Value 4</td>
-                  <td>14 cm</td>
-                </tr>
-                <tr>
-                  <td class="datasheet-features-type">Value 5</td>
-                  <td>plastic</td>
-                </tr>
+                <ng-container *ngFor="let info of additionalInfo | keyvalue">
+                  <tr>
+                      <td class="datasheet-features-type">{{info.key}}</td>
+                      <td>{{info.value}}</td>
+                  </tr>
+                </ng-container>
               </table>
             </div>
             <div class="tab-pane fade in active" id="Reviews">

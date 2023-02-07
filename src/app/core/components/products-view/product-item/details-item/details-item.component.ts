@@ -10,6 +10,7 @@ import { Product } from 'src/app/core/shared/product/product';
 export class DetailsItemComponent implements OnInit {
 
   item: Product;
+  additionalInfo: any;
 
   constructor(
     private activatedRoute: ActivatedRoute,
@@ -19,6 +20,7 @@ export class DetailsItemComponent implements OnInit {
   ngOnInit(): void {
     var id = this.activatedRoute.snapshot.params['id'];
     this.productsService.getProduct(id).subscribe(res => {
+      this.additionalInfo = JSON.parse(res.additionalInfo);      
       this.item = res;
     })
   }
