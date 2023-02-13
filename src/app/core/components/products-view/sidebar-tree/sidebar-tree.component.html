@@ -11,12 +11,12 @@
   </li>
 
   <li *ngFor="let category of categories" class="list-group-item clearfix dropdown active">
-    <a class="collapsed"><i class="fa fa-angle-right"></i>{{category.name}} </a>
+    <a class="collapsed" (click)="fetchCategory(category.id)"><i class="fa fa-angle-right"></i>{{category.name}} </a>
     <ul class="dropdown-menu" style="display:block;">
-      <li *ngFor="let child of category.children"><a (click)="fetchCategory(child.id)" ><i class="fa fa-angle-right"></i> {{child.name}}</a>
-        <!-- <ul class="dropdown-menu" style="display:block;">
-          <li> <a *ngFor="let childchild of child.children" class="collapsed"><i class="fa fa-angle-right"></i>{{childchild.name}} </a></li>
-        </ul> -->
+      <li *ngFor="let child1 of category.children"><a (click)="fetchCategory(child1.id)" ><i class="fa fa-angle-right"></i> {{child1.name}}</a>
+        <ul class="dropdown-menu" style="display:block;">
+          <li> <a *ngFor="let child2 of child1.children" class="collapsed" (click)="fetchCategory(child2.id)"><i class="fa fa-angle-right"></i>{{child2.name}} </a></li>
+        </ul>
       </li>
     </ul>
   </li>
