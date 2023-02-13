@@ -16,8 +16,10 @@ export class ProductService {
 
   filterData = new BehaviorSubject({});
 
+  searching = new BehaviorSubject<string>('');
+
   getProducts(query: string){
-     return this.http.get<Category>(this.url + query);
+     return this.http.get<Product[]>(this.url + query);
   }
 
   getProduct(id: number){

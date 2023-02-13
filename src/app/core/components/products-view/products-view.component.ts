@@ -15,15 +15,10 @@ export class ProductsViewComponent{
     private router: Router
     ) { }
 
-  onCategoryFilter(name) {
-    // this.activatedRouter.queryParams.subscribe(res => {
-    //   this.router.navigate(['products'], { queryParams: {...res, categoryName: name } });
-    // })
-
+  onCategoryFilter(categoryId: number) {
     this.productsService.filterData.next({
       ...this.productsService.filterData.getValue(),
-      categoryName: name,
-      textSearch: ''
+      categoryId: categoryId,
     });
   }
 }

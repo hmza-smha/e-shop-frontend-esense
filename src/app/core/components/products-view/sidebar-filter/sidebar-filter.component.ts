@@ -24,16 +24,14 @@ export class SidebarFilterComponent implements OnInit {
   onNotAvailable(condition){
     this.productsService.filterData.next({
       ...this.productsService.filterData.getValue(),
-      available: condition.target.checked,
-      textSearch: ''
+      isAvailable: condition.target.checked,
     });
   }
 
   onInStuck(condition){
     this.productsService.filterData.next({
       ...this.productsService.filterData.getValue(),
-      inStuck: condition.target.checked,
-      textSearch: ''
+      isInStock: condition.target.checked,
     });
   }
 
@@ -46,8 +44,7 @@ export class SidebarFilterComponent implements OnInit {
     this.productsService.filterData.next({
       ...this.productsService.filterData.getValue(),
       priceFrom:  price[0],
-      priceTo: price[1],
-      textSearch: ''
+      priceTo: price[1]
     });
   }
 }

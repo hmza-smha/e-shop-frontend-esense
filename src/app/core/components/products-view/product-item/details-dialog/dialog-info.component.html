@@ -6,7 +6,7 @@
       <div class="col-md-6 col-sm-6 col-xs-3">
         <div class="product-main-image">
           <img
-            [src]="data.imageURL"
+            [src]="data.imageUrl"
             alt="Cool green dress with red bell"
             class="img-responsive"
           />
@@ -37,7 +37,7 @@
             <em>$<span>{{data.price + data.oldPrice}}</span></em>
           </div>
           <div class="availability">
-            Availability: <strong>{{data.inStuck }}</strong>
+            Availability: <strong>{{data.isInStock }}</strong>
           </div>
         </div>
         <div class="description">

@@ -10,71 +10,71 @@ export class CategoryService {
 
   constructor(private http: HttpClient) { }
 
-  getCategoryTree() {
-    return this.http.get<Category[]>(this.url + "/tree");
+  getCategories() {
+    return this.http.get<Category[]>(this.url);
   }
 
   // for testing
-  dummyTree: Category[] = [
-    {
-      name: 'Cars',
-      children: [
-        {
-          name: 'BMW',
-        },
-        {
-          name: 'Honda',
-        },
-      ],
-    },
-    {
-      name: 'Mens',
-      children: [
-        {
-          name: 'Jeans',
-          children: [
-            {
-              name: 'Classic 1'
-            },
-            {
-              name: 'Classic 2'
-            }
-          ],
-        },
-        {
-          name: 'T-Shirt',
-        },
-      ],
-    },
-    {
-      name: 'Women',
-      children: [
-        {
-          name: 'Jeans',
-        },
-        {
-          name: 'T-Shirt'
-        },
-      ],
-    },
-    {
-      name: 'Kids',
-      children: [
-        {
-          name: 'Jeans',
-          children: [
-            {
-              name: 'Jeans',
-            },
-            {
-              name: 'T-Shirt'
-            },
-          ],
-        },
-        {
-          name: 'T-Shirt'
-        },
-      ],
-    },
-  ];
+  // dummyTree: Category[] = [
+  //   {
+  //     name: 'Cars',
+  //     children: [
+  //       {
+  //         name: 'BMW',
+  //       },
+  //       {
+  //         name: 'Honda',
+  //       },
+  //     ],
+  //   },
+  //   {
+  //     name: 'Mens',
+  //     children: [
+  //       {
+  //         name: 'Jeans',
+  //         children: [
+  //           {
+  //             name: 'Classic 1'
+  //           },
+  //           {
+  //             name: 'Classic 2'
+  //           }
+  //         ],
+  //       },
+  //       {
+  //         name: 'T-Shirt',
+  //       },
+  //     ],
+  //   },
+  //   {
+  //     name: 'Women',
+  //     children: [
+  //       {
+  //         name: 'Jeans',
+  //       },
+  //       {
+  //         name: 'T-Shirt'
+  //       },
+  //     ],
+  //   },
+  //   {
+  //     name: 'Kids',
+  //     children: [
+  //       {
+  //         name: 'Jeans',
+  //         children: [
+  //           {
+  //             name: 'Jeans',
+  //           },
+  //           {
+  //             name: 'T-Shirt'
+  //           },
+  //         ],
+  //       },
+  //       {
+  //         name: 'T-Shirt'
+  //       },
+  //     ],
+  //   },
+  // ];
 }

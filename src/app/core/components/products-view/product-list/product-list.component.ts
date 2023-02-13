@@ -18,36 +18,33 @@ export class ProductListComponent implements OnInit {
   products: Product[] = [];
 
   ngOnInit(): void {
+    let allProducts = [];
+
     this.productsService.filterData.subscribe(filters => {
       let query = this.buildQuery(filters);
+      console.log("Query:", query);
+      
       this.productsService.getProducts(query)
-        .subscribe(tree =>{
+        .subscribe(products =>{
+          this.products = allProducts = products;
+          console.log("products", products);
+          
           this.router.navigate(['products'], { queryParams: filters });
-
-          this.products = this.getProducts(tree);
+          
         })
+    })
+
+    this.productsService.searching.subscribe(text => {
+      this.products = allProducts.filter(x => x.name.toLowerCase().includes(text.toLowerCase()));
+
     })
   }
 
   private buildQuery(filters){
     if(filters.textSearch){
-      return  `?categoryName=${filters.categoryName ?? 'cars'}&textSearch=${filters.textSearch}`;
+      return  `?categoryId=${filters.categoryId ?? 'cars'}&textSearch=${filters.textSearch}`;
     }
-
-    return `?categoryName=${filters.categoryName ?? ''}&inStuck=${filters.inStuck ?? ''}&available=${filters.available ?? ''}&priceFrom=${filters.priceFrom ?? ''}&priceTo=${filters.priceTo ?? ''}`;
-  }
-
-  private getProducts(tree) {
-    let all = [];    
-    all = [...all, ...tree.products];
-    tree.subProducts.forEach(levelOne => {
-      all = [...all, ...levelOne.products];
-      levelOne.subProducts.forEach(levelTwo => {
-        all = [...all, ...levelTwo.products];
-      });
-    });
-
-    return all;
+    return `?categoryId=${filters.categoryId ?? ''}&isInStock=${filters.isInStock ?? ''}&isAvailable=${filters.isAvailable ?? ''}&priceFrom=${filters.priceFrom ?? ''}&priceTo=${filters.priceTo ?? ''}`;
   }
 
 }

@@ -30,14 +30,31 @@ export class SidebarTreeComponent implements OnInit {
 
   ngOnInit(): void {
     // this.categories = this.categoryService.dummyTree;
-    // this.productService.getCategoriesTree().subscribe(res => this.categories = res);
-    this.categoryService.getCategoryTree().subscribe(res => {
-      this.categories = res;
-      console.log("Tree", this.categories);
+    this.categoryService.getCategories().subscribe(categories => {
+      this.categories = this.buildTree(categories);
     });
   }
 
-  fetchCategory(name: string){
+
+  fetchCategory(name: number){
+    console.log("Finching on...", name);
+    
     this.categoryFilter.emit(name);
+  }
+
+  private buildTree(categories: Category[]): Category[] {
+
+    let tree = categories.filter(x => x.parentCategoryId == null);
+
+    tree.forEach(e => {
+      e.children = categories.filter(x => x.parentCategoryId == e.id);
+    });
+
+    tree.forEach(e => {
+      e.children.forEach(child => {
+        child.children = categories.filter(x => x.parentCategoryId == child.id)
+      })
+    })    
+    return tree;
   }
 }

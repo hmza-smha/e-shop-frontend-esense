@@ -1,52 +1,23 @@
 
-<!-- Building the side-tree -->
 <ul class="list-group margin-bottom-25 sidebar-menu">
+  <li class="list-group-item clearfix dropdown active">
+    <a  class="collapsed"><i class="fa fa-angle-right"></i>Mens </a>
+    <ul class="dropdown-menu" style="display:block;">
+      <li><a href="shop-product-list.html"><i class="fa fa-angle-right"></i> Trainers</a></li>
+      <li><a href="shop-product-list.html"><i class="fa fa-angle-right"></i> Jeans</a></li>
+      <li><a href="shop-product-list.html"><i class="fa fa-angle-right"></i> Chinos</a></li>
+      <li><a href="shop-product-list.html"><i class="fa fa-angle-right"></i> T-Shirts</a></li>
+    </ul>
+  </li>
 
-  <li *ngFor="let category of categories"
-   class="list-group-item clearfix dropdown">
-    <a (click)="fetchCategory(category.name)">
-      <i
-        [ngStyle]="{'opacity': category.children?.length > 0 ? '1' : '0'}"
-        class="fa fa-angle-right">
-      </i>
-      {{ category.name }}
-    </a>
-
-    <!-- Level 1 -->
-    <ng-container *ngIf="category.children">
-      <!-- <ul class="dropdown-menu"> -->
-      <ul class="dropdown-menu" style="display: block">
-        <li *ngFor="let children1 of category.children"
-          class="list-group-item clearfix dropdown">
-          <!-- <a (click)="fetchCategory(children1.name)"> -->
-          <a (click)="fetchCategory(children1.name)" class="collapsed">
-            <i
-              [ngStyle]="{'opacity': children1.children?.length > 0 ? '1' : '0'}"
-              class="fa fa-angle-right">
-            </i>
-            {{ children1.name }}
-          </a>
-
-          <!-- Level 2 -->
-          <ng-container *ngIf="children1.children">
-            <!-- <ul class="dropdown-menu"> -->
-            <ul class="dropdown-menu" style="display: block">
-              <li
-                *ngFor="let productName of children1.children"
-                class="list-group-item clearfix">
-                <!-- <a (click)="fetchCategory(productName + '')"> -->
-                <a (click)="fetchCategory(productName + '')"  class="collapsed">
-                  <i
-                    style="opacity: 0;"
-                    class="fa fa-angle-right">
-                  </i>
-                  {{ productName }}
-                </a>
-              </li>
-            </ul>
-          </ng-container>
-        </li>
-      </ul>
-    </ng-container>
+  <li *ngFor="let category of categories" class="list-group-item clearfix dropdown active">
+    <a class="collapsed"><i class="fa fa-angle-right"></i>{{category.name}} </a>
+    <ul class="dropdown-menu" style="display:block;">
+      <li *ngFor="let child of category.children"><a (click)="fetchCategory(child.id)" ><i class="fa fa-angle-right"></i> {{child.name}}</a>
+        <!-- <ul class="dropdown-menu" style="display:block;">
+          <li> <a *ngFor="let childchild of child.children" class="collapsed"><i class="fa fa-angle-right"></i>{{childchild.name}} </a></li>
+        </ul> -->
+      </li>
+    </ul>
   </li>
 </ul>

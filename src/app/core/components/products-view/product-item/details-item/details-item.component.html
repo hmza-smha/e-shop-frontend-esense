@@ -4,7 +4,7 @@
       <div class="row">
         <div class="col-md-6 col-sm-6">
           <div class="product-main-image">
-            <img [src]="item?.imageURL" alt="Cool green dress with red bell" class="img-responsive" data-BigImgsrc="https://via.placeholder.com/600x800">
+            <img [src]="item?.imageUrl" alt="Cool green dress with red bell" class="img-responsive" data-BigImgsrc="https://via.placeholder.com/600x800">
           </div>
           <div class="product-other-images">
             <a href="https://via.placeholder.com/600x800" class="fancybox-button" rel="photos-lib"><img alt="Berry Lace Dress" src="https://via.placeholder.com/600x800"></a>
@@ -20,9 +20,9 @@
               <em>$<span>{{ item?.oldPrice }}</span></em>
             </div>
             <div class="availability">
-              In Stuck: <strong>{{ item?.inStuck }}</strong>
+              In Stock: <strong>{{ item?.isInStock }}</strong>
               <br>
-              Availability: <strong>{{ item?.available }}</strong>
+              Availability: <strong>{{ item?.isAvailable }}</strong>
             </div>
           </div>
           <div class="description">
@@ -71,7 +71,7 @@
           <ul id="myTab" class="nav nav-tabs">
             <li><a href="#Description" data-toggle="tab">Description</a></li>
             <li><a href="#Information" data-toggle="tab">Information</a></li>
-            <li class="active"><a href="#Reviews" data-toggle="tab">Reviews {{'(' + item?.reviews.length + ')' }}</a></li>
+            <li class="active"><a href="#Reviews" data-toggle="tab">Reviews {{'(' + item?.reviews?.length + ')' }}</a></li>
           </ul>
           <div id="myTabContent" class="tab-content">
             <div class="tab-pane fade" id="Description">
@@ -91,7 +91,7 @@
               </table>
             </div>
             <div class="tab-pane fade in active" id="Reviews">
-              <p *ngIf="item?.reviews.length == 0">There are no reviews for this product.</p>
+              <p *ngIf="item?.reviews?.length == 0">There are no reviews for this product.</p>
               <ng-container *ngFor="let review of item?.reviews">
                 <div class="review-item clearfix">
                   <div class="review-item-submitted">
