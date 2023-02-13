@@ -40,11 +40,19 @@ export class ProductListComponent implements OnInit {
     })
   }
 
+  onFilterint(value){
+    console.log("Event",value.target.value);
+    this.productsService.filterData.next({
+      ...this.productsService.filterData.getValue(),
+      order: value.target.value
+    });
+  }
+
   private buildQuery(filters){
     if(filters.textSearch){
-      return  `?categoryId=${filters.categoryId ?? 'cars'}&textSearch=${filters.textSearch}`;
+      return  `?categoryId=${filters.categoryId ?? 'cars'}&textSearch=${filters.textSearch}&${filters.order ?? ''}`;
     }
-    return `?categoryId=${filters.categoryId ?? ''}&isInStock=${filters.isInStock ?? ''}&isAvailable=${filters.isAvailable ?? ''}&priceFrom=${filters.priceFrom ?? ''}&priceTo=${filters.priceTo ?? ''}`;
+    return `?categoryId=${filters.categoryId ?? ''}&isInStock=${filters.isInStock ?? ''}&isAvailable=${filters.isAvailable ?? ''}&priceFrom=${filters.priceFrom ?? ''}&priceTo=${filters.priceTo ?? ''}&${filters.order ?? ''}`;
   }
 
 }
