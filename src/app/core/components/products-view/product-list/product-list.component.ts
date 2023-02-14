@@ -1,7 +1,18 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
+import { Router } from '@angular/router';
 import { ProductService } from 'src/app/core/api/products.service';
 import { Product } from 'src/app/core/shared/product/product';
+
+
+interface Filters {
+  categoryId?: number;
+  isInStuck?: boolean;
+  isAvailable?: boolean;
+  priceFrom?: number;
+  priceTo?: number;
+  order?: string;
+  sort?: string;
+}
 
 @Component({
   selector: 'app-product-list',
@@ -11,25 +22,28 @@ export class ProductListComponent implements OnInit {
 
   constructor(
     private productsService: ProductService,
-    private activatedRouter: ActivatedRoute,
     private router: Router
     ) { }
 
   products: Product[] = [];
+  filters: Filters;
 
   ngOnInit(): void {
     let allProducts = [];
 
-    this.productsService.filterData.subscribe(filters => {
-      let query = this.buildQuery(filters);
-      console.log("Query:", query);
-      
+    this.productsService.filterData.subscribe(filter => {
+      this.filters = {
+        ...this.filters,
+        ...filter
+      }
+
+      let query = this.buildQuery(this.filters);
+
       this.productsService.getProducts(query)
         .subscribe(products =>{
           this.products = allProducts = products;
-          console.log("products", products);
           
-          this.router.navigate(['products'], { queryParams: filters });
+          this.router.navigate(['products'], { queryParams: this.filters });
           
         })
     })
@@ -40,10 +54,8 @@ export class ProductListComponent implements OnInit {
     })
   }
 
-  onFilterint(value){
-    console.log("Event",value.target.value);
+  onDropdownFilters(value){
     this.productsService.filterData.next({
-      ...this.productsService.filterData.getValue(),
       order: value.target.value
     });
   }

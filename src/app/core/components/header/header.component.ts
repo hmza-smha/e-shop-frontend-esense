@@ -21,16 +21,12 @@ export class HeaderComponent implements OnInit {
 
   }
 
-  onInput(search){
-    console.log("Input:", search);
+  onSearching(search: string){
     this.productsService.searching.next(search);
   }
 
   onSubmit(searchForm){
-    // this.productsService.filterData.next({
-    //   ...this.productsService.filterData.getValue(),
-    //   textSearch: searchForm.form.value.text
-    // });
+
   }
 
 }

@@ -1,6 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { ProductService } from 'src/app/core/api/products.service';
 import { Product } from 'src/app/core/shared/product/product';
 
 @Component({
@@ -11,8 +10,7 @@ export class ProductItemComponent implements OnInit {
 
   @Input() item: Product;
 
-  constructor(private productsService: ProductService,
-    private router: Router) { }
+  constructor(private router: Router) { }
 
   ngOnInit(): void {
   }
