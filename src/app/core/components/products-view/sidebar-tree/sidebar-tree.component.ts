@@ -36,8 +36,14 @@ export class SidebarTreeComponent implements OnInit {
   }
 
 
-  fetchCategory(name: number){
-    console.log("Finching on...", name);
+  fetchCategory(name: number, event){
+    let children = event.target.nextSibling;
+    if(children?.style?.display == "block"){
+      children.style.display = "none";
+    }
+    else if (children?.style?.display == "none") {
+      children.style.display = "block";
+    }
     
     this.categoryFilter.emit(name);
   }
