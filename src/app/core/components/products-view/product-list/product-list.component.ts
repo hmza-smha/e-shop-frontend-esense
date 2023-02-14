@@ -1,18 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { ProductService } from 'src/app/core/api/products.service';
 import { Product } from 'src/app/core/shared/product/product';
 
-
-interface Filters {
-  categoryId?: number;
-  isInStuck?: boolean;
-  isAvailable?: boolean;
-  priceFrom?: number;
-  priceTo?: number;
-  order?: string;
-  sort?: string;
-}
 
 @Component({
   selector: 'app-product-list',
@@ -21,30 +11,20 @@ interface Filters {
 export class ProductListComponent implements OnInit {
 
   constructor(
-    private productsService: ProductService,
-    private router: Router
+      private productsService: ProductService,
+      private activatedRoute: ActivatedRoute
     ) { }
 
   products: Product[] = [];
-  filters: Filters;
 
   ngOnInit(): void {
     let allProducts = [];
 
-    this.productsService.filterData.subscribe(filter => {
-      this.filters = {
-        ...this.filters,
-        ...filter
-      }
-
-      let query = this.buildQuery(this.filters);
-
+    this.activatedRoute.queryParams.subscribe(res=>{
+      let query = this.buildQuery(res);
       this.productsService.getProducts(query)
         .subscribe(products =>{
-          this.products = allProducts = products;
-          
-          this.router.navigate(['products'], { queryParams: this.filters });
-          
+          this.products = allProducts = products;          
         })
     })
 
@@ -61,9 +41,6 @@ export class ProductListComponent implements OnInit {
   }
 
   private buildQuery(filters){
-    if(filters.textSearch){
-      return  `?categoryId=${filters.categoryId ?? 'cars'}&textSearch=${filters.textSearch}&${filters.order ?? ''}`;
-    }
     return `?categoryId=${filters.categoryId ?? ''}&isInStock=${filters.isInStock ?? ''}&isAvailable=${filters.isAvailable ?? ''}&priceFrom=${filters.priceFrom ?? ''}&priceTo=${filters.priceTo ?? ''}&${filters.order ?? ''}`;
   }
 
