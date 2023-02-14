@@ -1,21 +1,11 @@
 
 <ul class="list-group margin-bottom-25 sidebar-menu">
-  <li class="list-group-item clearfix dropdown active">
-    <a  class="collapsed"><i class="fa fa-angle-right"></i>Mens </a>
-    <ul class="dropdown-menu" style="display:block;">
-      <li><a href="shop-product-list.html"><i class="fa fa-angle-right"></i> Trainers</a></li>
-      <li><a href="shop-product-list.html"><i class="fa fa-angle-right"></i> Jeans</a></li>
-      <li><a href="shop-product-list.html"><i class="fa fa-angle-right"></i> Chinos</a></li>
-      <li><a href="shop-product-list.html"><i class="fa fa-angle-right"></i> T-Shirts</a></li>
-    </ul>
-  </li>
-
   <li *ngFor="let category of categories" class="list-group-item clearfix dropdown active">
     <a class="collapsed" (click)="fetchCategory(category.id, $event)">
       <i class="fa fa-angle-right"></i>
       {{category.name}}
     </a>
-    <ul class="dropdown-menu" style="display:block;">
+    <ul class="dropdown-menu" style="display:none;">
       <li *ngFor="let child of category.children"><a (click)="fetchCategory(child.id, $event)">
         <i class="fa fa-angle-right"></i>
         {{child.name}}
