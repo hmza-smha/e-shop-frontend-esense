@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { ProductService } from 'src/app/core/api/products.service';
+import { map } from 'rxjs';
+import { ProductService } from 'src/app/core/backend/services/products.service';
 import { Product } from 'src/app/core/shared/product/product';
 
 @Component({
@@ -19,9 +20,11 @@ export class DetailsItemComponent implements OnInit {
 
   ngOnInit(): void {
     var id = this.activatedRoute.snapshot.params['id'];
-    this.productsService.getProduct(id).subscribe(res => {
+    this.productsService.getProducts({id})
+    .pipe(map(x => x[0]))
+    .subscribe(res => {
       this.additionalInfo = JSON.parse(res.additionalInfo);
-      this.item = res;
+      this.item = res as Product;
     })
   }
 

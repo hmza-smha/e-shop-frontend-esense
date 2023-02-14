@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
-import { ProductService } from '../../api/products.service';
+import { ProductService } from '../../backend/services/products.service';
 
 @Component({
   selector: 'app-header',

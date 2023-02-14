@@ -1,10 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { ProductService } from '../../api/products.service';
+import { ProductService } from '../../backend/services/products.service';
 
-interface Filters {
+export interface Filters {
+  id?: number;
   categoryId?: number;
-  isInStuck?: boolean;
+  isInStock?: boolean;
   isAvailable?: boolean;
   priceFrom?: number;
   priceTo?: number;
@@ -25,14 +26,14 @@ export class ProductsViewComponent implements OnInit{
     private router: Router) { }
 
   ngOnInit(): void {
-    this.productsService.filterData.subscribe(filter => {
-      this.filters = {
-        ...this.filters,
-        ...filter
-      }
+    // this.productsService.filterData.subscribe(filter => {
+    //   this.filters = {
+    //     ...this.filters,
+    //     ...filter
+    //   }
 
-      this.router.navigate(['products'], { queryParams: this.filters });
-    })
+    //   this.router.navigate(['products'], { queryParams: this.filters });
+    // })
   }
 
   onCategoryFilter(categoryId: number) {

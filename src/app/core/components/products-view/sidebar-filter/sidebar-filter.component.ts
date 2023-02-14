@@ -1,5 +1,5 @@
 import { Component, ElementRef, EventEmitter, OnInit, Output, ViewChild } from '@angular/core';
-import { ProductService } from 'src/app/core/api/products.service';
+import { ProductService } from 'src/app/core/backend/services/products.service';
 
 @Component({
   selector: 'app-sidebar-filter',

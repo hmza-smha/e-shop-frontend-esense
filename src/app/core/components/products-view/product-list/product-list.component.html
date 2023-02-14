@@ -19,16 +19,16 @@
         <div class="pull-right">
           <label class="control-label">Sort&nbsp;By:</label>
           <select class="form-control input-sm" (change)="onDropdownFilters($event)">
-            <option value="sort=name&amp;order=ASC">Name (A - Z)</option>
-            <option value="sort=name&amp;order=DESC">Name (Z - A)</option>
-            <option value="sort=price&amp;order=ASC">Price (Low &gt; High)</option>
-            <option value="sort=price&amp;order=DESC">Price (High &gt; Low)</option>
-            <option value="sort=rate&amp;order=DESC" selected="selected">
+            <option value="name,ASC">Name (A - Z)</option>
+            <option value="name,DESC">Name (Z - A)</option>
+            <option value="price,ASC">Price (Low &gt; High)</option>
+            <option value="price,DESC">Price (High &gt; Low)</option>
+            <option value="rate,DESC" selected="selected">
               Rating (Highest)
             </option>
-            <option value="sort=rate&amp;order=ASC">Rating (Lowest)</option>
-            <option value="sort=model&amp;order=ASC">Model (A - Z)</option>
-            <option value="sort=model&amp;order=DESC">Model (Z - A)</option>
+            <option value="rate,ASC">Rating (Lowest)</option>
+            <!-- <option value="model,ASC">Model (A - Z)</option>
+            <option value="model,DESC">Model (Z - A)</option> -->
           </select>
         </div>
       </div>
