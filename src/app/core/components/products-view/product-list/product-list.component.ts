@@ -26,7 +26,7 @@ export class ProductListComponent implements OnInit {
 
   products: Product[] = [];
   filters: Filters;
-  take = 1;
+  take = 10;
   page: number = 0;
 
   ngOnInit(): void {
@@ -51,7 +51,7 @@ export class ProductListComponent implements OnInit {
     })
   }
 
-  onDropdownFilters(value) {
+  onDropdownFilters(value: any) {
     let values = value.target.value.split(',');
 
     this.productsService.filterData.next({
@@ -60,7 +60,7 @@ export class ProductListComponent implements OnInit {
     });
   }
 
-  onTakeFilters(value) {
+  onTakeFilters(value: any) {
     
     this.take = value.target.value;
     this.productsService.filterData.next({
@@ -69,9 +69,9 @@ export class ProductListComponent implements OnInit {
 
   }
 
-  onPaginator(no: string) {
-    this.page = +no;
-    let skip = +no * this.take;
+  onPaginator(n: string) {
+    this.page = +n;
+    let skip = +n * this.take;
     this.productsService.filterData.next({
       skip: skip
     });
