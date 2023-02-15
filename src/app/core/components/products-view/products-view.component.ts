@@ -11,6 +11,8 @@ export interface Filters {
   priceTo?: number;
   order?: string;
   sort?: string;
+  take?: string;
+  skip?: number;
 }
 
 @Component({

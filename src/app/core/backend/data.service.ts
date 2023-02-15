@@ -7,17 +7,15 @@ import { Injectable } from '@angular/core';
 export class DataService {
 
   constructor(
-    private url: string, 
+    public url: string, 
     public http: HttpClient
     ) { }
 
   get(id?: number){
-    if(id) {
+    if(id) 
       return this.http.get(this.url + '?id=' + id);
-    }
-    else {
+    else 
       return this.http.get(this.url);
-    }
   }
 
   create(resource){

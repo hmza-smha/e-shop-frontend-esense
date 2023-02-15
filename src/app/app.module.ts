@@ -26,6 +26,10 @@ import { CommonModule } from '@angular/common';
 import { DetailsItemComponent } from './core/components/products-view/product-item/details-item/details-item.component';
 import { ProductListComponent } from './core/components/products-view/product-list/product-list.component';
 import { NotFoundComponent } from './core/shared/not-found/not-found.component';
+import { PaginatorComponent } from './core/shared/paginator/paginator.component';
+import { MatPaginatorModule } from '@angular/material/paginator';
+
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -45,7 +49,8 @@ import { NotFoundComponent } from './core/shared/not-found/not-found.component';
     DetailsDialogComponent,
     DetailsItemComponent,
     ProductListComponent,
-    NotFoundComponent
+    NotFoundComponent,
+    PaginatorComponent
   ],
   imports: [
     BrowserModule,
@@ -56,7 +61,8 @@ import { NotFoundComponent } from './core/shared/not-found/not-found.component';
     BrowserAnimationsModule,
     MatButtonModule,
     MatDialogModule,
-    CommonModule
+    CommonModule,
+    MatPaginatorModule 
   ],
   providers: [],
   bootstrap: [AppComponent]

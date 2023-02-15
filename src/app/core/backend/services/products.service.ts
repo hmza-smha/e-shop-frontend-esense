@@ -12,8 +12,6 @@ import { Filters } from '../../components/products-view/products-view.component'
 })
 export class ProductService extends DataService {
 
-  private readonly productUrl = "http://localhost:5257/api/Products";
-
   constructor(http: HttpClient) {
       super("http://localhost:5257/api/Products", http)
      }
@@ -23,6 +21,6 @@ export class ProductService extends DataService {
   searching = new BehaviorSubject<string>('');
 
   getProducts(filters: Filters){
-     return this.http.post<Product[]>(this.productUrl, filters);
+     return this.http.post<Product[]>(this.url, filters);
   }
 }
